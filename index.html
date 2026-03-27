@@ -212,19 +212,16 @@
     .trust-item svg { width: 18px; height: 18px; }
 
     /* Features Grid */
-    .features { background: var(--black); color: #ffffff; }
-    .features .section-title { color: #ffffff; }
-    .features .section-desc { color: #999999; }
-    .features .section-label { color: var(--gold); }
+    .features { background: #f8f8f8; }
     .features-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
     }
     .feature-card {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      background: #ffffff; border: 1px solid var(--border);
       border-radius: var(--radius); padding: 32px 24px;
       transition: all 300ms var(--ease); position: relative; overflow: hidden;
     }
-    .feature-card:hover { border-color: rgba(184,150,46,0.3); box-shadow: 0 4px 24px rgba(184,150,46,0.1); transform: translateY(-4px); }
+    .feature-card:hover { border-color: var(--border-gold); box-shadow: var(--shadow); transform: translateY(-4px); }
     .feature-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--gold), var(--gold-light)); opacity: 0; transition: opacity 300ms;
@@ -232,16 +229,17 @@
     .feature-card:hover::before { opacity: 1; }
     .feature-icon {
       width: 48px; height: 48px; border-radius: 14px;
-      background: rgba(184,150,46,0.1); border: 1px solid rgba(184,150,46,0.2);
+      background: var(--gold-dim); border: 1px solid var(--border-gold);
       display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
     }
     .feature-icon svg { width: 22px; height: 22px; color: var(--gold); }
-    .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #ffffff; }
-    .feature-card p { font-size: 13px; color: #999999; line-height: 1.7; }
+    .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .feature-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
 
     /* KI Section */
     .ki-section {
       background: #ffffff; position: relative; overflow: hidden;
+      border-top: 1px solid rgba(0,0,0,0.04);
     }
     .ki-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
@@ -314,27 +312,25 @@
 
     /* Compliance Section */
     .compliance {
-      background: var(--black); color: #ffffff; position: relative; overflow: hidden;
+      background: #f8f8f8; position: relative; overflow: hidden;
     }
-    .compliance .section-title { color: #ffffff; }
-    .compliance .section-desc { color: #999999; }
     .compliance-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px;
     }
     .compliance-card {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      background: #ffffff; border: 1px solid var(--border);
       border-radius: var(--radius); padding: 28px 20px; text-align: center;
       transition: all 300ms var(--ease);
     }
-    .compliance-card:hover { border-color: rgba(184,150,46,0.3); background: rgba(184,150,46,0.08); }
+    .compliance-card:hover { border-color: var(--border-gold); box-shadow: var(--shadow); }
     .compliance-icon {
       width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px;
-      background: rgba(184,150,46,0.15); border: 1px solid rgba(184,150,46,0.3);
+      background: var(--gold-dim); border: 1px solid var(--border-gold);
       display: flex; align-items: center; justify-content: center;
     }
     .compliance-icon svg { width: 24px; height: 24px; color: var(--gold); }
-    .compliance-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #ffffff; }
-    .compliance-card p { font-size: 12px; color: #888888; line-height: 1.6; }
+    .compliance-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .compliance-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
     /* Demo Section */
     .demo {
@@ -606,8 +602,8 @@
         <p class="section-desc" style="max-width:600px;margin:0 auto">Von der ersten Kundenanfrage bis zur automatischen Nachbestellung — Casa 2035 ist die einzige Plattform im DACH-Raum, die KI, Datenschutz und Omnichannel vereint. Fuer Friseursalons, Kosmetikstudios, Nagelstudios, Wellness und mehr.</p>
       </div>
       <div class="features-grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="feature-card reveal reveal-delay-1" style="grid-column:span 1;border-color:rgba(184,150,46,0.2);background:rgba(184,150,46,0.06)">
-          <div class="feature-icon" style="background:rgba(184,150,46,0.2);border-color:rgba(184,150,46,0.4)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="feature-card reveal reveal-delay-1" style="border-color:var(--border-gold);background:var(--gold-glow)">
+          <div class="feature-icon" style="background:rgba(184,150,46,0.12);border-color:var(--border-gold)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3>5-Kanal Omnichannel</h3>
           <p>WhatsApp, Instagram, Facebook, E-Mail und Ihre Website — alle Kundenanfragen in einem System. Automatische Antworten rund um die Uhr. Fuer jeden Beauty-Betrieb.</p>
           <div style="margin-top:12px;font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px">Kern-Feature</div>
@@ -617,8 +613,8 @@
           <h3>Intelligente Terminplanung</h3>
           <p>KI versteht Freitext-Nachrichten, extrahiert Services und findet automatisch freie Slots. Bestaetigung + Erinnerung inklusive.</p>
         </div>
-        <div class="feature-card reveal reveal-delay-3" style="grid-column:span 1;border-color:rgba(184,150,46,0.2);background:rgba(184,150,46,0.06)">
-          <div class="feature-icon" style="background:rgba(184,150,46,0.2);border-color:rgba(184,150,46,0.4)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="feature-card reveal reveal-delay-3" style="border-color:var(--border-gold);background:var(--gold-glow)">
+          <div class="feature-icon" style="background:rgba(184,150,46,0.12);border-color:var(--border-gold)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <h3>KI-Analyse</h3>
           <p>Fuer Friseure: 17-Parameter Haaranalyse. Fuer Kosmetik: Hautanalyse. Fuer Nail: Nageldiagnostik. KI analysiert — Ihr Profi entscheidet. PDF-Report fuer den Kunden.</p>
           <div style="margin-top:12px;font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px">Kern-Feature</div>
@@ -790,59 +786,59 @@
   </div>
 
   <!-- Vergleich -->
-  <section style="background:var(--black);padding:80px 24px">
+  <section style="background:#ffffff;padding:80px 24px">
     <div class="container" style="max-width:900px">
       <div class="reveal" style="text-align:center;margin-bottom:32px">
         <div class="section-label" style="justify-content:center">Warum Casa 2035?</div>
-        <h2 class="section-title" style="color:#ffffff">Was andere <em>nicht</em> koennen.</h2>
-        <p class="section-desc" style="max-width:600px;margin:0 auto;color:#999999">Die meisten Salon-Tools bieten Online-Buchung. Wir bieten ein Komplettsystem — mit KI, eigener Website und voller Compliance.</p>
+        <h2 class="section-title">Was andere <em>nicht</em> koennen.</h2>
+        <p class="section-desc" style="max-width:600px;margin:0 auto">Die meisten Salon-Tools bieten Online-Buchung. Wir bieten ein Komplettsystem — mit KI, eigener Website und voller Compliance.</p>
       </div>
-      <div class="reveal reveal-delay-1" style="overflow-x:auto">
+      <div class="reveal reveal-delay-1" style="overflow-x:auto;background:#f8f8f8;border-radius:var(--radius);padding:4px;border:1px solid var(--border)">
         <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:center">
           <thead>
-            <tr style="border-bottom:2px solid rgba(255,255,255,0.1)">
-              <th style="text-align:left;padding:12px 8px;font-weight:600;color:#888888;font-size:11px;text-transform:uppercase;letter-spacing:1px">Feature</th>
-              <th style="padding:12px 8px;background:rgba(184,150,46,0.15);border-radius:8px 8px 0 0;font-weight:700;color:var(--gold)">Casa 2035</th>
-              <th style="padding:12px 8px;font-weight:500;color:#888888">Klassische Tools</th>
-              <th style="padding:12px 8px;font-weight:500;color:#888888">Marktplatz-Modelle</th>
+            <tr style="border-bottom:2px solid var(--border)">
+              <th style="text-align:left;padding:12px 8px;font-weight:600;color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:1px">Feature</th>
+              <th style="padding:12px 8px;background:var(--gold-dim);border-radius:8px 8px 0 0;font-weight:700;color:var(--gold)">Casa 2035</th>
+              <th style="padding:12px 8px;font-weight:500;color:var(--text-muted)">Klassische Tools</th>
+              <th style="padding:12px 8px;font-weight:500;color:var(--text-muted)">Marktplatz-Modelle</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
-              <td style="text-align:left;padding:10px 8px;font-weight:500;color:#ffffff">Eigene Business-Website</td>
-              <td style="padding:10px 8px;background:rgba(184,150,46,0.15);color:var(--gold);font-weight:700">Inklusive</td>
-              <td style="padding:10px 8px;color:#666666">Nein</td>
-              <td style="padding:10px 8px;color:#666666">Nein</td>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="text-align:left;padding:10px 8px;font-weight:500;color:var(--text)">Eigene Business-Website</td>
+              <td style="padding:10px 8px;background:var(--gold-dim);color:var(--gold);font-weight:700">Inklusive</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Nein</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Nein</td>
             </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
-              <td style="text-align:left;padding:10px 8px;font-weight:500;color:#ffffff">KI-Haaranalyse</td>
-              <td style="padding:10px 8px;background:rgba(184,150,46,0.15);color:var(--gold);font-weight:700">17 Parameter</td>
-              <td style="padding:10px 8px;color:#666666">Nein</td>
-              <td style="padding:10px 8px;color:#666666">Nein</td>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="text-align:left;padding:10px 8px;font-weight:500;color:var(--text)">KI-Haaranalyse</td>
+              <td style="padding:10px 8px;background:var(--gold-dim);color:var(--gold);font-weight:700">17 Parameter</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Nein</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Nein</td>
             </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
-              <td style="text-align:left;padding:10px 8px;font-weight:500;color:#ffffff">Omnichannel (5 Kanaele)</td>
-              <td style="padding:10px 8px;background:rgba(184,150,46,0.15);color:var(--gold);font-weight:700">WhatsApp, IG, FB, E-Mail, Web</td>
-              <td style="padding:10px 8px;color:#666666">Meist nur E-Mail</td>
-              <td style="padding:10px 8px;color:#666666">Nur Marktplatz</td>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="text-align:left;padding:10px 8px;font-weight:500;color:var(--text)">Omnichannel (5 Kanaele)</td>
+              <td style="padding:10px 8px;background:var(--gold-dim);color:var(--gold);font-weight:700">WhatsApp, IG, FB, E-Mail, Web</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Meist nur E-Mail</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Nur Marktplatz</td>
             </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
-              <td style="text-align:left;padding:10px 8px;font-weight:500;color:#ffffff">Provision</td>
-              <td style="padding:10px 8px;background:rgba(184,150,46,0.15);color:var(--gold);font-weight:700">0%</td>
-              <td style="padding:10px 8px;color:#666666">0%</td>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="text-align:left;padding:10px 8px;font-weight:500;color:var(--text)">Provision</td>
+              <td style="padding:10px 8px;background:var(--gold-dim);color:var(--gold);font-weight:700">0%</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">0%</td>
               <td style="padding:10px 8px;color:#e53e3e;font-weight:600">20-35%</td>
             </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.06)">
-              <td style="text-align:left;padding:10px 8px;font-weight:500;color:#ffffff">DSGVO + EU AI Act</td>
-              <td style="padding:10px 8px;background:rgba(184,150,46,0.15);color:var(--gold);font-weight:700">Voll konform</td>
-              <td style="padding:10px 8px;color:#666666">Teilweise</td>
-              <td style="padding:10px 8px;color:#666666">Oft unklar</td>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="text-align:left;padding:10px 8px;font-weight:500;color:var(--text)">DSGVO + EU AI Act</td>
+              <td style="padding:10px 8px;background:var(--gold-dim);color:var(--gold);font-weight:700">Voll konform</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Teilweise</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Oft unklar</td>
             </tr>
             <tr>
-              <td style="text-align:left;padding:10px 8px;font-weight:500;color:#ffffff">Server-Standort</td>
-              <td style="padding:10px 8px;background:rgba(184,150,46,0.15);border-radius:0 0 8px 8px;color:var(--gold);font-weight:700">Deutschland / EU</td>
-              <td style="padding:10px 8px;color:#666666">Unterschiedlich</td>
-              <td style="padding:10px 8px;color:#666666">Oft USA/UK</td>
+              <td style="text-align:left;padding:10px 8px;font-weight:500;color:var(--text)">Server-Standort</td>
+              <td style="padding:10px 8px;background:var(--gold-dim);border-radius:0 0 8px 8px;color:var(--gold);font-weight:700">Deutschland / EU</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Unterschiedlich</td>
+              <td style="padding:10px 8px;color:var(--text-muted)">Oft USA/UK</td>
             </tr>
           </tbody>
         </table>
