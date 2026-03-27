@@ -93,11 +93,12 @@
     }
     .nav.scrolled { padding: 8px 32px; background: rgba(255,255,255,0.96); border-bottom-color: var(--border); box-shadow: 0 2px 20px rgba(0,0,0,0.04); }
     .nav-logo {
-      font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600;
+      font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600;
       color: var(--black); text-decoration: none; letter-spacing: -0.3px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .nav-logo em { font-style: italic; color: var(--gold); }
-    .nav-logo span { font-weight: 400; color: var(--text-light); font-size: 14px; margin-left: 8px; }
+    .nav-logo span { font-weight: 400; color: var(--text-light); font-size: 13px; margin-left: 6px; }
     .nav-links { display: flex; gap: 24px; align-items: center; flex-wrap: nowrap; }
     .nav-links a {
       color: var(--text-light); text-decoration: none;
@@ -544,8 +545,8 @@
       <p class="hero-sub">Termine, Kommunikation und Analyse — KI-gestuetzt und DSGVO-konform. Fuer Friseursalons, Kosmetikstudios und Beauty-Betriebe in Deutschland, Oesterreich und der Schweiz.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-gold">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          In 15 Min. sehen, was moeglich ist
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Kostenlose Demo vereinbaren
         </a>
         <a href="#pricing" class="btn btn-outline">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -620,7 +621,7 @@
         <h2 class="section-title" style="max-width:600px;margin:0 auto 18px">Ihr Beauty-Betrieb. <em>Intelligenter.</em></h2>
         <p class="section-desc" style="max-width:600px;margin:0 auto">Von der ersten Kundenanfrage bis zur automatischen Nachbestellung — Casa 2035 vereint alles in einer Plattform. Fuer Friseursalons, Kosmetikstudios, Nagelstudios und Wellness-Betriebe.</p>
       </div>
-      <div class="features-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="features-grid">
         <div class="feature-card reveal reveal-delay-1" style="border-color:var(--border-gold);background:var(--gold-glow)">
           <div class="feature-icon" style="background:rgba(184,150,46,0.12);border-color:var(--border-gold)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3>Alle Kanaele — ein System</h3>
@@ -664,23 +665,23 @@
         <div class="reveal">
           <div class="section-label">KI mit Verantwortung</div>
           <h2 class="section-title">KI die unterstuetzt.<br><em>Menschen</em> die entscheiden.</h2>
-          <p class="section-desc">Bei Casa 2035 ist KI ein Werkzeug — kein Ersatz. Ihre Kunden schreiben, die KI antwortet sofort — persoenlich, freundlich, mit den richtigen Infos. Aber: Bei wichtigen Entscheidungen hat immer Ihr Team das letzte Wort.</p>
+          <p class="section-desc">Termine, Preise, Verfuegbarkeit — darauf antwortet die KI sofort, 24 Stunden am Tag. Aber sobald es um Stornierungen, Reklamationen oder Finanzen geht, uebernimmt Ihr Team. So verpassen Sie keine Anfrage — und behalten trotzdem die volle Kontrolle.</p>
           <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px">
             <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" style="width:20px;height:20px;flex-shrink:0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Immer korrekt:</strong> Preise, Termine und Verfuegbarkeit stimmen — garantiert</span>
+              <span><strong>Routine laeuft automatisch:</strong> Terminanfragen, Preisinfos, Oeffnungszeiten — die KI antwortet sofort</span>
             </div>
             <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" style="width:20px;height:20px;flex-shrink:0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Ihre Daten bleiben hier:</strong> Alles auf europaeischen Servern — nichts verlässt die EU</span>
+              <span><strong>Wichtiges bleibt bei Ihnen:</strong> Storno, Reklamation, Finanzen — da entscheidet immer Ihr Fachpersonal</span>
             </div>
             <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" style="width:20px;height:20px;flex-shrink:0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Mensch entscheidet:</strong> Bei Stornierung, Reklamation oder Finanzen — Sie behalten die Kontrolle</span>
+              <span><strong>Ihre Daten bleiben hier:</strong> Europaeische Server — nichts verlaesst die EU</span>
             </div>
             <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" style="width:20px;height:20px;flex-shrink:0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span><strong>Ehrlich:</strong> Ihre Kunden wissen, dass KI im Einsatz ist — volle Transparenz</span>
+              <span><strong>Transparent:</strong> Ihre Kunden wissen, dass KI im Einsatz ist</span>
             </div>
           </div>
         </div>
@@ -690,29 +691,29 @@
             <div class="ki-flow-step">
               <div class="ki-flow-step-num">1</div>
               <div>
-                <div class="ki-flow-step-text">Kundin schreibt ueber WhatsApp</div>
-                <div class="ki-flow-step-sub">"Hallo, ich haette gerne einen Termin fuer Balayage"</div>
+                <div class="ki-flow-step-text">Kundin schreibt ueber ihren Lieblingskanal</div>
+                <div class="ki-flow-step-sub">"Ich haette gerne einen Termin fuer Balayage naechste Woche"</div>
               </div>
             </div>
             <div class="ki-flow-step">
               <div class="ki-flow-step-num">2</div>
               <div>
-                <div class="ki-flow-step-text">KI antwortet sofort — persoenlich und freundlich</div>
-                <div class="ki-flow-step-sub">Mit dem richtigen Preis, freien Terminen und Ihrem Salon-Stil</div>
+                <div class="ki-flow-step-text">Ihre KI antwortet sofort — persoenlich und freundlich</div>
+                <div class="ki-flow-step-sub">Mit Preis, freien Terminen und Ihrem individuellen Salon-Stil</div>
               </div>
             </div>
             <div class="ki-flow-step">
               <div class="ki-flow-step-num">3</div>
               <div>
                 <div class="ki-flow-step-text">Kundin bestaetigt — Termin ist gebucht</div>
-                <div class="ki-flow-step-sub">Automatische Bestaetigung + Erinnerung vor dem Termin</div>
+                <div class="ki-flow-step-sub">Bestaetigung + Erinnerung laufen automatisch</div>
               </div>
             </div>
             <div class="ki-flow-step ki-flow-highlight">
               <div class="ki-flow-step-num" style="background:var(--gold)">&#10003;</div>
               <div>
-                <div class="ki-flow-step-text" style="font-weight:700;color:var(--gold)">Sie haben nichts tun muessen</div>
-                <div class="ki-flow-step-sub">Kein Telefon, kein Zettel, kein Stress — und trotzdem volle Kontrolle</div>
+                <div class="ki-flow-step-text" style="font-weight:700;color:var(--gold)">Sie mussten nichts tun</div>
+                <div class="ki-flow-step-sub">Kein Telefon, kein Zettel — und trotzdem volle Kontrolle</div>
               </div>
             </div>
           </div>
@@ -744,7 +745,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nachbestell-Erinnerung</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Mein Salon — Ihr Betrieb auf einen Blick</li>
           </ul>
-          <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Unverbindlich anfragen</a>
+          <a href="mailto:info@casa2035.de?subject=Anfrage%20Smart%20Start%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Paket%20Smart%20Start%20(49%20EUR%2FMo).%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Unverbindlich anfragen</a>
         </div>
         <div class="pricing-card featured reveal reveal-delay-2">
           <div class="pricing-badge">Beliebteste Wahl</div>
@@ -754,14 +755,14 @@
           <div class="pricing-setup">Einmalig: 2.490 EUR Setup · zzgl. MwSt</div>
           <ul class="pricing-features">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Alles aus Smart Start</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Haaranalyse VOLL (17 Param.)</strong></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Farbcode voll</strong></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> PDF-Analyse-Report fuer Kunden</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Vollstaendige KI-Analyse</strong></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Farbberatung komplett</strong></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> PDF-Report fuer Ihre Kunden</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Eigene Business-Website</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Kasse + Tagesabrechnung</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Lager-Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Lagerverwaltung</li>
           </ul>
-          <a href="#contact" class="btn btn-gold" style="width:100%;justify-content:center">Jetzt Demo vereinbaren</a>
+          <a href="mailto:info@casa2035.de?subject=Anfrage%20Salon%20Pro%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Paket%20Salon%20Pro%20(79%20EUR%2FMo).%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-gold" style="width:100%;justify-content:center">Jetzt Demo vereinbaren</a>
         </div>
         <div class="pricing-card reveal reveal-delay-3">
           <div class="pricing-name">Full Suite</div>
@@ -770,14 +771,14 @@
           <div class="pricing-setup">Einmalig: 4.990 EUR Setup · zzgl. MwSt</div>
           <ul class="pricing-features">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Alles aus Salon Pro</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Multi-Filial-Management</strong></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Mehrere Standorte verwalten</strong></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> <strong>Kunden-Historie + Verlauf</strong></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> DATEV/sevDesk Export</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Priority Support</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Individuelles Onboarding</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> SLA 4h Reaktionszeit</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Steuerberater-Export</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Bevorzugter Support</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Persoenliches Onboarding</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Reaktionszeit unter 4 Stunden</li>
           </ul>
-          <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Individuelles Angebot</a>
+          <a href="mailto:info@casa2035.de?subject=Anfrage%20Full%20Suite%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Paket%20Full%20Suite%20(199%20EUR%2FMo).%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Standorte%3A%20%5BAnzahl%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Individuelles Angebot</a>
         </div>
       </div>
     </div>
@@ -841,8 +842,8 @@
               <td style="padding:12px 10px;color:var(--text-muted)">0%</td>
             </tr>
             <tr style="border-bottom:1px solid var(--border)">
-              <td style="text-align:left;padding:12px 10px;font-weight:500;color:var(--text)">Automatische KI-Antworten 24/7</td>
-              <td style="padding:12px 10px;background:var(--gold-dim);color:var(--gold);font-weight:700">Ja — alle Kanaele</td>
+              <td style="text-align:left;padding:12px 10px;font-weight:500;color:var(--text)">KI-Antworten rund um die Uhr</td>
+              <td style="padding:12px 10px;background:var(--gold-dim);color:var(--gold);font-weight:700">Ja — auf allen Kanaelen</td>
               <td style="padding:12px 10px;color:var(--text-muted)">Eingeschraenkt</td>
               <td style="padding:12px 10px;color:var(--text-muted)">Nein</td>
             </tr>
