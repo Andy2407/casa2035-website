@@ -14,7 +14,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Casa 2035 — KI-Management fuer Beauty & Salons">
   <meta name="twitter:description" content="Das innovativste KI-Management-System fuer Beauty-Betriebe im DACH-Raum.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💇</text></svg>">
+  <link rel="icon" type="image/png" href="icons/IMG_7886.PNG">
   <title>Casa 2035 — KI-Management fuer Beauty &amp; Salons | DSGVO &amp; EU AI Act konform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
       --black: #1a1a1a;
       --black-light: #2a2a2a;
       --white: #ffffff;
-      --cream: #ffffff;
+      /* --cream entfernt: identisch mit --white, war irrefuehrend */
       --warm: #f8f8f8;
       --gold: #b8962e;
       --gold-light: #c9a93d;
@@ -255,7 +255,7 @@
     .ki-flow-step {
       display: flex; align-items: center; gap: 14px;
       padding: 14px; border-radius: var(--radius-sm);
-      background: var(--cream); border: 1px solid var(--border);
+      background: var(--white); border: 1px solid var(--border);
       transition: all 300ms var(--ease);
     }
     .ki-flow-step:hover { border-color: var(--border-gold); }
@@ -356,7 +356,7 @@
       padding: 16px; display: flex; flex-direction: column; gap: 10px;
     }
     .demo-screen-card {
-      background: var(--cream); border-radius: var(--radius-sm);
+      background: var(--white); border-radius: var(--radius-sm);
       padding: 12px; border: 1px solid var(--border);
     }
     .demo-screen-card-title { font-size: 11px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
@@ -522,13 +522,13 @@
     <div class="hero-bg"></div>
     <div class="hero-particles" id="heroParticles"></div>
     <div class="hero-content">
-      <div class="hero-badge"><span class="hero-badge-dot"></span>Erste KI-Plattform dieser Art im DACH-Raum</div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>KI + Omnichannel + Compliance — in einem System</div>
       <h1>Die Zukunft der<br>Beauty-Branche ist <em>jetzt.</em></h1>
-      <p class="hero-sub">KI-Terminplanung, Omnichannel-Kommunikation und Haaranalyse — in einem System. DSGVO-konform. EU AI Act ready. Fuer Friseursalons, Kosmetik, Nail und Wellness im DACH-Raum.</p>
+      <p class="hero-sub">Termine, Kommunikation und Analyse — KI-gestuetzt, DSGVO-konform, auf EU-Servern. Fuer Beauty-Betriebe im DACH-Raum.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-gold">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Kostenlose Demo vereinbaren
+          In 15 Min. sehen, was moeglich ist
         </a>
         <a href="#pricing" class="btn btn-outline">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -587,9 +587,11 @@
   </div>
 
   <!-- Innovation Banner -->
-  <div style="background:#ffffff;padding:36px 24px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.04)">
+  <div style="background:#ffffff;padding:48px 24px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.04)">
     <div class="container reveal">
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,24px);font-weight:500;line-height:1.5;max-width:700px;margin:0 auto;color:var(--text-light)">KI-Haaranalyse, Wunschfrisur-Service, Omnichannel und volle Compliance — <em style="color:var(--gold);font-style:italic">in einem System.</em> Kein anderer Anbieter im DACH-Raum bietet das.</p>
+      <div style="width:48px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));margin:0 auto 20px;border-radius:1px"></div>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:500;line-height:1.5;max-width:750px;margin:0 auto;color:var(--text)">KI-Haaranalyse. Wunschfrisur-Service. 5-Kanal Omnichannel. Volle DSGVO-Compliance. <em style="color:var(--gold);font-style:italic">Ein System.</em></p>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:12px">Kein anderer Anbieter im DACH-Raum vereint das in einer Plattform.</p>
     </div>
   </div>
 
@@ -601,34 +603,36 @@
         <h2 class="section-title" style="max-width:600px;margin:0 auto 18px">Ihr Beauty-Betrieb. <em>Intelligenter.</em></h2>
         <p class="section-desc" style="max-width:600px;margin:0 auto">Von der ersten Kundenanfrage bis zur automatischen Nachbestellung — Casa 2035 ist die einzige Plattform im DACH-Raum, die KI, Datenschutz und Omnichannel vereint. Fuer Friseursalons, Kosmetikstudios, Nagelstudios, Wellness und mehr.</p>
       </div>
-      <div class="features-grid">
-        <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="features-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="feature-card reveal reveal-delay-1" style="grid-column:span 1;border-color:rgba(184,150,46,0.2);background:rgba(184,150,46,0.06)">
+          <div class="feature-icon" style="background:rgba(184,150,46,0.2);border-color:rgba(184,150,46,0.4)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3>5-Kanal Omnichannel</h3>
           <p>WhatsApp, Instagram, Facebook, E-Mail und Ihre Website — alle Kundenanfragen in einem System. Automatische Antworten rund um die Uhr. Fuer jeden Beauty-Betrieb.</p>
+          <div style="margin-top:12px;font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px">Kern-Feature</div>
         </div>
         <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
           <h3>Intelligente Terminplanung</h3>
           <p>KI versteht Freitext-Nachrichten, extrahiert Services und findet automatisch freie Slots. Bestaetigung + Erinnerung inklusive.</p>
         </div>
-        <div class="feature-card reveal reveal-delay-3">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="feature-card reveal reveal-delay-3" style="grid-column:span 1;border-color:rgba(184,150,46,0.2);background:rgba(184,150,46,0.06)">
+          <div class="feature-icon" style="background:rgba(184,150,46,0.2);border-color:rgba(184,150,46,0.4)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <h3>KI-Analyse</h3>
           <p>Fuer Friseure: 17-Parameter Haaranalyse. Fuer Kosmetik: Hautanalyse. Fuer Nail: Nageldiagnostik. KI analysiert — Ihr Profi entscheidet. PDF-Report fuer den Kunden.</p>
+          <div style="margin-top:12px;font-size:11px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.5px">Kern-Feature</div>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22"/></svg></div>
+          <div class="feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22"/></svg></div>
           <h3>Wunsch-Look Service</h3>
           <p>Kunden schicken ein Foto ihres Wunsch-Looks — die KI analysiert Machbarkeit und empfiehlt passende Behandlungen. Kostenlos als Kundenmagnet.</p>
         </div>
         <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <div class="feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
           <h3>Nachbestell-Erinnerung</h3>
           <p>Automatische Erinnerung wenn Pflegeprodukte aufgebraucht sind. Persoenlich formuliert, mit passenden Empfehlungen. Mehr Umsatz ohne Aufwand.</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="feature-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
           <h3>PWA Dashboard</h3>
           <p>Ihr Betrieb auf einen Blick: Termine, Kasse, Lager, Beratungen. Installierbar auf jedem Geraet. 4 Rollen: Auszubildende bis Chefin.</p>
         </div>
@@ -768,6 +772,20 @@
       </div>
     </div>
   </section>
+
+  <!-- Social Proof -->
+  <div style="background:#f8f8f8;padding:48px 24px;text-align:center;border-top:1px solid rgba(0,0,0,0.04)">
+    <div class="container reveal" style="max-width:700px">
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,22px);font-weight:500;color:var(--text);line-height:1.6;font-style:italic">&bdquo;Endlich ein System, das Termine, Kommunikation und Analyse vereint — ohne dass ich 5 verschiedene Tools brauche.&ldquo;</div>
+      <div style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px">R</div>
+        <div style="text-align:left">
+          <div style="font-size:13px;font-weight:600;color:var(--text)">Erster Testkunde</div>
+          <div style="font-size:11px;color:var(--text-muted)">Friseursalon in Muenchen · seit 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Vergleich -->
   <section style="background:var(--black);padding:80px 24px">
@@ -927,16 +945,16 @@
   <section class="cta-section" id="contact">
     <div class="container">
       <h2 class="reveal">Bereit fuer die <em>Zukunft?</em></h2>
-      <p class="reveal reveal-delay-1">Es gibt nichts Vergleichbares im deutschsprachigen Raum. Vereinbaren Sie jetzt Ihre kostenlose Demo — wir zeigen Ihnen live, wie Casa 2035 Ihren Betrieb transformiert.</p>
+      <p class="reveal reveal-delay-1">Stellen Sie sich vor: 3 Terminanfragen ueber Nacht — alle automatisch beantwortet. Vereinbaren Sie Ihre Demo und sehen Sie live, wie Casa 2035 Ihren Betrieb transformiert.</p>
       <div class="reveal reveal-delay-2" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
         <a href="mailto:info@casa2035.de?subject=Demo-Anfrage Casa 2035" class="btn btn-gold">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Kostenlose Demo vereinbaren
+          In 15 Min. sehen, was moeglich ist
         </a>
       </div>
       <div class="reveal reveal-delay-3" style="margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:8px">
-        <p style="font-size:14px;color:#999999">Schreiben Sie uns direkt: <strong style="color:var(--gold)">info@casa2035.de</strong></p>
-        <p style="font-size:12px;color:#666666">Kein Vertrag. Keine Verpflichtung. Wir zeigen einfach, was Casa 2035 kann.</p>
+        <p style="font-size:14px;color:#999999">Oder direkt: <strong style="color:var(--gold)">info@casa2035.de</strong></p>
+        <p style="font-size:12px;color:#666666">Kein Vertrag. Keine Verpflichtung. 15 Minuten — und Sie wissen, ob es passt.</p>
       </div>
     </div>
   </section>
@@ -1087,6 +1105,7 @@
   <!-- Login Overlay -->
   <div id="loginOverlay" style="position:fixed;inset:0;z-index:9999;background:#1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px">
     <div style="text-align:center">
+      <img src="icons/IMG_7886.PNG" alt="Casa 2035 Logo" style="width:80px;height:80px;border-radius:20px;margin-bottom:12px;object-fit:cover">
       <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;margin-bottom:4px"><em style="color:#b8962e;font-style:italic">Casa</em> 2035</div>
       <div style="font-size:11px;color:#888;letter-spacing:1px;text-transform:uppercase">Zugang zur Website</div>
     </div>
