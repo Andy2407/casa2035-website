@@ -129,7 +129,7 @@
     .hero {
       position: relative; min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
-      background: var(--black); overflow: hidden; padding-top: 56px;
+      background: var(--black); overflow: hidden; padding-top: 72px;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -489,6 +489,9 @@
       section { padding: 60px 20px; }
     }
     @media (max-width: 600px) {
+      .hero { padding-top: 90px; padding-bottom: 40px; align-items: flex-start; }
+      .hero-content { padding-top: 20px; }
+      .hero-badge { font-size: 9px; padding: 6px 14px; }
       .trust-bar { padding: 14px 16px; }
       .trust-bar .container { gap: 12px; justify-content: flex-start; }
       .trust-item { font-size: 10px; }
