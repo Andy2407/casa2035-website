@@ -537,6 +537,7 @@
       .hero-actions { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 300px; justify-content: center; }
       .pricing-card.featured { transform: none; }
+      .contact-row { flex-direction: column; }
       .sticky-cta { padding: 12px 18px; font-size: 12px; bottom: 16px; right: 16px; }
     }
   </style>
@@ -545,7 +546,7 @@
 
   <!-- Navigation -->
   <nav class="nav" id="mainNav">
-    <a href="#hero" class="nav-logo"><img src="icons/IMG_7886.PNG" alt="" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;object-fit:cover"><em>Casa</em> 2035 <span>Beauty Management</span></a>
+    <a href="#hero" class="nav-logo"><img src="icons/IMG_7886.PNG" alt="Casa 2035 Logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;object-fit:cover"><em>Casa</em> 2035 <span>Beauty Management</span></a>
     <div class="nav-links">
       <a href="#features">Funktionen</a>
       <a href="#ki">So funktioniert's</a>
@@ -956,7 +957,7 @@
           <div class="demo-screen-header">Mein Salon — Tagesüberblick</div>
           <div class="demo-screen-body">
             <div class="demo-screen-card">
-              <div class="demo-screen-card-title">Naechster Termin</div>
+              <div class="demo-screen-card-title">Nächster Termin</div>
               <div class="demo-screen-card-val">14:30</div>
               <div class="demo-screen-card-sub">Sophia M. — Balayage</div>
             </div>
@@ -967,7 +968,7 @@
             </div>
             <div class="demo-screen-card">
               <div class="demo-screen-card-title">KI-Vorschlag</div>
-              <div class="demo-screen-card-val" style="font-size:14px;color:var(--text)">Frau Mueller: Olaplex-Nachbestellung fällig</div>
+              <div class="demo-screen-card-val" style="font-size:14px;color:var(--text)">Frau Müller: Olaplex-Nachbestellung fällig</div>
             </div>
             <div class="demo-screen-card" style="background:var(--gold-dim);border-color:rgba(184,150,46,0.2)">
               <div class="demo-screen-card-title" style="color:var(--gold)">Neue Anfrage</div>
@@ -1011,15 +1012,15 @@
       <div class="reveal reveal-delay-2">
         <div class="contact-form" id="contactForm">
           <div class="contact-row">
-            <input type="text" class="contact-field" id="contactName" placeholder="Ihr Name" maxlength="80" required>
-            <input type="text" class="contact-field" id="contactSalon" placeholder="Name Ihres Salons" maxlength="80">
+            <input type="text" class="contact-field" id="contactName" placeholder="Ihr Name" maxlength="80" required aria-label="Ihr Name">
+            <input type="text" class="contact-field" id="contactSalon" placeholder="Name Ihres Salons" maxlength="80" aria-label="Name Ihres Salons">
           </div>
           <div class="contact-row">
-            <input type="email" class="contact-field" id="contactEmail" placeholder="E-Mail-Adresse" maxlength="120" required>
-            <input type="tel" class="contact-field" id="contactPhone" placeholder="Telefon (optional)" maxlength="30">
+            <input type="email" class="contact-field" id="contactEmail" placeholder="E-Mail-Adresse" maxlength="120" required aria-label="E-Mail-Adresse">
+            <input type="tel" class="contact-field" id="contactPhone" placeholder="Telefon (optional)" maxlength="30" aria-label="Telefonnummer">
           </div>
-          <input type="text" class="contact-field" id="contactOrt" placeholder="Stadt / Region" maxlength="60">
-          <select class="contact-field" id="contactPaket" style="color:#999">
+          <input type="text" class="contact-field" id="contactOrt" placeholder="Stadt / Region" maxlength="60" aria-label="Stadt oder Region">
+          <select class="contact-field" id="contactPaket" style="color:#999" aria-label="Paketauswahl">
             <option value="">Welches Paket interessiert Sie?</option>
             <option value="smart-start">Smart Start (ab 49 EUR/Mo)</option>
             <option value="salon-pro">Salon Pro (ab 79 EUR/Mo)</option>
