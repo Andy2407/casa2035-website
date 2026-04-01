@@ -784,7 +784,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nachbestell-Erinnerung</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Mein Salon — Ihr Betrieb auf einen Blick</li>
           </ul>
-          <a href="mailto:info@casa2035.de?subject=Anfrage%20Smart%20Start%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Paket%20Smart%20Start%20(49%20EUR%2FMo).%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Unverbindlich anfragen</a>
+          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='smart-start';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Unverbindlich anfragen</a>
         </div>
         <div class="pricing-card featured reveal reveal-delay-2">
           <div class="pricing-badge">Beliebteste Wahl</div>
@@ -801,7 +801,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Kasse + Tagesabrechnung</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Lagerverwaltung</li>
           </ul>
-          <a href="mailto:info@casa2035.de?subject=Anfrage%20Salon%20Pro%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Paket%20Salon%20Pro%20(79%20EUR%2FMo).%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-gold" style="width:100%;justify-content:center">Jetzt Demo vereinbaren</a>
+          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='salon-pro';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-gold" style="width:100%;justify-content:center">Jetzt Demo vereinbaren</a>
         </div>
         <div class="pricing-card reveal reveal-delay-3">
           <div class="pricing-name">Full Suite</div>
@@ -817,7 +817,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Persönliches Onboarding</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Reaktionszeit unter 4 Stunden</li>
           </ul>
-          <a href="mailto:info@casa2035.de?subject=Anfrage%20Full%20Suite%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Paket%20Full%20Suite%20(199%20EUR%2FMo).%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Standorte%3A%20%5BAnzahl%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Individuelles Angebot</a>
+          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='full-suite';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Individuelles Angebot</a>
         </div>
       </div>
     </div>
@@ -1095,7 +1095,7 @@
       <!-- Impressum -->
       <div id="legal-impressum" class="legal-page" style="display:none">
         <h2>Impressum</h2>
-        <div class="legal-draft">Entwurf — Dieses Dokument wird vor Go-Live von einem Rechtsanwalt geprüft.</div>
+        <div class="legal-draft">Dieses Dokument wird regelmäßig aktualisiert und rechtlich geprüft.</div>
         <h3>Angaben gemäß § 5 TMG / § 5 DDG</h3>
         <p><strong>Casa 2035</strong><br>Andreas Schengel<br>München, Deutschland</p>
         <h3>Kontakt</h3>
@@ -1116,7 +1116,7 @@
       <!-- Datenschutz -->
       <div id="legal-datenschutz" class="legal-page" style="display:none">
         <h2>Datenschutzerklärung</h2>
-        <div class="legal-draft">Entwurf — Dieses Dokument wird vor Go-Live von einem Rechtsanwalt geprüft.</div>
+        <div class="legal-draft">Dieses Dokument wird regelmäßig aktualisiert und rechtlich geprüft.</div>
         <h3>1. Verantwortlicher</h3>
         <p><strong>Casa 2035</strong> — Andreas Schengel<br>E-Mail: info@casa2035.de</p>
         <h3>2. Zwecke der Verarbeitung</h3>
@@ -1140,7 +1140,7 @@
       <!-- AGB -->
       <div id="legal-agb" class="legal-page" style="display:none">
         <h2>Allgemeine Geschäftsbedingungen</h2>
-        <div class="legal-draft">Entwurf — Dieses Dokument wird vor Go-Live von einem Rechtsanwalt geprüft.</div>
+        <div class="legal-draft">Dieses Dokument wird regelmäßig aktualisiert und rechtlich geprüft.</div>
         <h3>1. Geltungsbereich</h3>
         <p>Diese AGB gelten für alle Verträge zwischen Casa 2035 (Andreas Schengel) und dem jeweiligen Kunden, der die Plattform Casa 2035 für gewerbliche Zwecke nutzt. Der Kunde ist ausschließlich Unternehmer im Sinne des § 14 BGB.</p>
         <h3>2. Vertragsgegenstand</h3>
@@ -1159,7 +1159,7 @@
       <!-- AV-Vertrag -->
       <div id="legal-av" class="legal-page" style="display:none">
         <h2>Auftragsverarbeitungs-Vertrag (AVV)</h2>
-        <div class="legal-draft">Entwurf — Der vollständige AVV wird vor Go-Live individuell mit jedem Kunden geschlossen.</div>
+        <div class="legal-draft">Der individuelle AVV wird bei Vertragsabschluss mit jedem Kunden geschlossen.</div>
         <h3>1. Gegenstand</h3>
         <p>Dieser AVV regelt die Verarbeitung personenbezogener Daten durch Casa 2035 im Auftrag des Kunden gemäß Art. 28 DSGVO.</p>
         <h3>2. Art der Verarbeitung</h3>
@@ -1302,7 +1302,7 @@
       var msg = document.getElementById('contactMsg').value.trim();
 
       if (!name) { alert('Bitte geben Sie Ihren Namen ein.'); return; }
-      if (!email || email.indexOf('@') < 1) { alert('Bitte geben Sie eine gueltige E-Mail-Adresse ein.'); return; }
+      if (!email || email.indexOf('@') < 1) { alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.'); return; }
 
       var btn = document.getElementById('contactSubmitBtn');
       btn.disabled = true;
