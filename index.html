@@ -1061,7 +1061,7 @@
         <div>
           <h4>Unternehmen</h4>
           <a href="#compliance">Sicherheit</a>
-          <a href="mailto:info@casa2035.de">Kontakt</a>
+          <a href="#contact" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Kontakt</a>
           <a href="#" style="opacity:0.4;pointer-events:none">Blog — Q3 2026</a>
           <a href="#" style="opacity:0.4;pointer-events:none">Karriere — Q3 2026</a>
         </div>
@@ -1097,7 +1097,7 @@
         <h2>Impressum</h2>
         <div class="legal-draft">Entwurf — Dieses Dokument wird vor Go-Live von einem Rechtsanwalt geprüft.</div>
         <h3>Angaben gemäß § 5 TMG / § 5 DDG</h3>
-        <p><strong>Casa 2035</strong><br>Andreas Schengel<br>[Adresse wird vor Go-Live ergänzt]<br>Deutschland</p>
+        <p><strong>Casa 2035</strong><br>Andreas Schengel<br>München, Deutschland</p>
         <h3>Kontakt</h3>
         <p>E-Mail: info@casa2035.de</p>
         <h3>Vertretungsberechtigter</h3>
@@ -1148,7 +1148,7 @@
         <h3>3. Pakete &amp; Preise</h3>
         <p>Smart Start: 49 EUR/Monat (Setup 990 EUR). Salon Pro: 79 EUR/Monat (Setup 2.490 EUR). Full Suite: 199 EUR/Monat (Setup 4.990 EUR). Alle Preise zzgl. gesetzlicher MwSt. 0% Provision.</p>
         <h3>4. Laufzeit</h3>
-        <p>Smart Start: 6 Monate Mindestlaufzeit. Salon Pro / Full Suite: 12 Monate. Kuendigung mit 3 Monaten Frist zum Vertragsende.</p>
+        <p>Smart Start: 6 Monate Mindestlaufzeit. Salon Pro / Full Suite: 12 Monate. Kündigung mit 3 Monaten Frist zum Vertragsende.</p>
         <h3>5. Datenschutz &amp; KI</h3>
         <p>Alle Daten bleiben in der EU. KI-generierte Inhalte werden als solche gekennzeichnet. Kein eigenständiges Handeln der KI bei kritischen Entscheidungen.</p>
         <h3>6. Haftung</h3>
@@ -1210,11 +1210,11 @@
       <div id="loginError" style="font-size:12px;color:#e53e3e;margin-bottom:8px;display:none">Falsches Passwort</div>
       <button onclick="checkLogin()" style="width:100%;padding:14px;background:linear-gradient(135deg,#b8962e,#c9a93d);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;letter-spacing:0.5px">Anmelden</button>
     </div>
-    <div style="font-size:10px;color:#555">Casa 2035 &middot; Testphase</div>
+    <div style="font-size:10px;color:#555">Casa 2035 &middot; Vorschau</div>
   </div>
 
   <!-- Sticky CTA -->
-  <a href="mailto:info@casa2035.de?subject=Demo-Anfrage%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20pers%C3%B6nliche%20Demo%20von%20Casa%202035.%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="sticky-cta" id="stickyCta">
+  <a href="#contact" class="sticky-cta" id="stickyCta" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     Demo anfordern
   </a>
@@ -1226,12 +1226,12 @@
   <div class="feedback-panel" id="feedbackPanel">
     <div id="feedbackForm">
       <h4>Feedback geben</h4>
-      <p>Helfen Sie uns, Casa 2035 noch besser zu machen. Testphase — jedes Feedback zählt!</p>
+      <p>Helfen Sie uns, Casa 2035 noch besser zu machen. Jedes Feedback zählt!</p>
       <select id="feedbackType">
         <option value="">Kategorie wählen...</option>
         <option value="design">Design &amp; Optik</option>
         <option value="inhalt">Inhalt &amp; Texte</option>
-        <option value="funktion">Funktionalitaet</option>
+        <option value="funktion">Funktionalität</option>
         <option value="preis">Preise &amp; Pakete</option>
         <option value="fehler">Fehler gefunden</option>
         <option value="idee">Feature-Idee</option>
