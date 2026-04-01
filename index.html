@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Casa 2035 — Das KI-gestützte Management-System für Beauty-Betriebe. Friseursalons, Kosmetikstudios, Nagelstudios, Wellness. Alle Kanäle in einem System, DSGVO-konform. DACH-Region.">
   <meta name="theme-color" content="#b8962e">
+  <!-- TESTPHASE: noindex aktiv. Vor Go-Live entfernen! -->
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:title" content="Casa 2035 — KI-Management für Beauty & Salons">
   <meta property="og:description" content="Das innovativste KI-Management-System für Friseursalons, Kosmetikstudios und Wellness-Betriebe im DACH-Raum. Alle Kanäle in einem System, DSGVO-konform.">
@@ -478,6 +479,40 @@
     .feedback-success svg { width: 48px; height: 48px; color: var(--success); margin-bottom: 8px; }
     .feedback-success p { font-size: 14px; font-weight: 600; color: var(--text); }
 
+    /* === Cookie-Banner === */
+    .cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9990;
+      background: rgba(26,26,26,0.97); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(184,150,46,0.2);
+      padding: 18px 24px; display: none; align-items: center; justify-content: center; gap: 16px;
+      flex-wrap: wrap; font-size: 13px; color: #ccc;
+    }
+    .cookie-banner.show { display: flex; }
+    .cookie-banner a { color: var(--gold); text-decoration: underline; }
+    .cookie-btn { padding: 10px 20px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
+    .cookie-btn-accept { background: linear-gradient(135deg, #b8962e, #c9a93d); color: #fff; }
+    .cookie-btn-reject { background: rgba(255,255,255,0.08); color: #ccc; border: 1px solid rgba(255,255,255,0.15); }
+    @media (max-width: 600px) { .cookie-banner { flex-direction: column; text-align: center; padding: 16px; gap: 10px; } }
+
+    /* === Logout-Button in Nav === */
+    .nav-logout { background: none; border: 1px solid rgba(184,150,46,0.3); border-radius: var(--radius-full); padding: 6px 14px; font-size: 11px; font-weight: 600; color: var(--gold); cursor: pointer; font-family: 'Inter', sans-serif; letter-spacing: 0.3px; transition: all 200ms; display: none; }
+    .nav-logout:hover { background: rgba(184,150,46,0.1); border-color: var(--gold); }
+    .nav-logout.show { display: inline-flex; align-items: center; gap: 5px; }
+
+    /* === Kontaktformular === */
+    .contact-form { max-width: 480px; margin: 28px auto 0; text-align: left; }
+    .contact-field { width: 100%; padding: 13px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); margin-bottom: 10px; transition: border-color 200ms; }
+    .contact-field:focus { outline: none; border-color: var(--gold); }
+    .contact-field::placeholder { color: #999; }
+    .contact-row { display: flex; gap: 10px; }
+    .contact-row .contact-field { flex: 1; }
+    .contact-textarea { resize: vertical; min-height: 80px; }
+    .contact-submit { width: 100%; padding: 14px; border: none; border-radius: var(--radius-full); background: linear-gradient(135deg, #b8962e, #c9a93d); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 4px; transition: opacity 200ms; }
+    .contact-submit:hover { opacity: 0.9; }
+    .contact-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .contact-success { display: none; text-align: center; padding: 24px 0; }
+    .contact-success svg { width: 48px; height: 48px; color: var(--success); margin-bottom: 8px; }
+
     /* Responsive */
     @media (max-width: 1200px) {
       .nav-links { display: none; }
@@ -518,6 +553,7 @@
       <a href="#compliance">Sicherheit</a>
       <a href="#demo">Demo</a>
       <a href="#contact" class="nav-cta">Demo anfordern</a>
+      <button class="nav-logout" id="navLogout" onclick="doLogout()">Abmelden</button>
     </div>
     <button class="nav-mobile" onclick="toggleMobile()" aria-label="Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -535,6 +571,7 @@
     <a href="#compliance" onclick="toggleMobile()">Sicherheit</a>
     <a href="#demo" onclick="toggleMobile()">Demo</a>
     <a href="#contact" onclick="toggleMobile()">Demo anfordern</a>
+    <a href="#" id="mobileLogout" onclick="event.preventDefault();toggleMobile();doLogout()" style="color:#e53e3e;display:none">Abmelden</a>
   </div>
 
   <!-- Hero -->
@@ -971,15 +1008,37 @@
     <div class="container">
       <h2 class="reveal">Bereit für die <em>Zukunft?</em></h2>
       <p class="reveal reveal-delay-1">Stellen Sie sich vor: 3 Terminanfragen über Nacht — alle automatisch beantwortet. In 15 Minuten zeigen wir Ihnen live, was Casa 2035 für Ihren Betrieb tun kann.</p>
-      <div class="reveal reveal-delay-2" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <a href="mailto:info@casa2035.de?subject=Demo-Anfrage%20%E2%80%93%20Casa%202035&body=Hallo%20Casa%202035%20Team%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20eine%20pers%C3%B6nliche%20Demo%20von%20Casa%202035.%0A%0AMein%20Betrieb%3A%20%5BName%20Ihres%20Salons%5D%0AOrt%3A%20%5BStadt%5D%0AAnzahl%20Mitarbeiter%3A%20%5BAnzahl%5D%0A%0AIch%20freue%20mich%20auf%20Ihre%20R%C3%BCckmeldung!%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A%5BIhr%20Name%5D" class="btn btn-gold">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Kostenlose Demo vereinbaren
-        </a>
+      <div class="reveal reveal-delay-2">
+        <div class="contact-form" id="contactForm">
+          <div class="contact-row">
+            <input type="text" class="contact-field" id="contactName" placeholder="Ihr Name" maxlength="80" required>
+            <input type="text" class="contact-field" id="contactSalon" placeholder="Name Ihres Salons" maxlength="80">
+          </div>
+          <div class="contact-row">
+            <input type="email" class="contact-field" id="contactEmail" placeholder="E-Mail-Adresse" maxlength="120" required>
+            <input type="tel" class="contact-field" id="contactPhone" placeholder="Telefon (optional)" maxlength="30">
+          </div>
+          <input type="text" class="contact-field" id="contactOrt" placeholder="Stadt / Region" maxlength="60">
+          <select class="contact-field" id="contactPaket" style="color:#999">
+            <option value="">Welches Paket interessiert Sie?</option>
+            <option value="smart-start">Smart Start (ab 49 EUR/Mo)</option>
+            <option value="salon-pro">Salon Pro (ab 79 EUR/Mo)</option>
+            <option value="full-suite">Full Suite (ab 199 EUR/Mo)</option>
+            <option value="unsicher">Noch unsicher — bitte beraten</option>
+          </select>
+          <textarea class="contact-field contact-textarea" id="contactMsg" placeholder="Ihre Nachricht (optional)" maxlength="1000"></textarea>
+          <button class="contact-submit" id="contactSubmitBtn" onclick="submitContact()">Kostenlose Demo vereinbaren</button>
+          <p style="font-size:10px;color:#999;text-align:center;margin-top:10px">Kein Vertrag. Keine Verpflichtung. Wir melden uns innerhalb von 24 Stunden.</p>
+        </div>
+        <div class="contact-success" id="contactSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px">Vielen Dank!</h3>
+          <p style="font-size:14px;color:#999">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+        </div>
       </div>
       <div class="reveal reveal-delay-3" style="margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:8px">
         <p style="font-size:14px;color:#999999">Oder direkt: <strong style="color:var(--gold)">info@casa2035.de</strong></p>
-        <p style="font-size:12px;color:#666666">Kein Vertrag. Keine Verpflichtung. 15 Minuten — und Sie wissen, ob es passt.</p>
+        <p style="font-size:12px;color:#666666">15 Minuten — und Sie wissen, ob Casa 2035 zu Ihrem Betrieb passt.</p>
       </div>
     </div>
   </section>
@@ -1127,6 +1186,15 @@
     </div>
   </div>
 
+  <!-- Cookie-Banner (DSGVO) -->
+  <div class="cookie-banner" id="cookieBanner">
+    <span>Diese Website verwendet nur technisch notwendige Cookies. Wir laden Google Fonts extern. <a href="#" onclick="event.preventDefault();openLegal('datenschutz')">Datenschutz</a></span>
+    <div style="display:flex;gap:8px;flex-shrink:0">
+      <button class="cookie-btn cookie-btn-reject" onclick="handleCookies('reject')">Nur notwendige</button>
+      <button class="cookie-btn cookie-btn-accept" onclick="handleCookies('accept')">Verstanden</button>
+    </div>
+  </div>
+
   <!-- Login Overlay -->
   <div id="loginOverlay" style="position:fixed;inset:0;z-index:9999;background:#1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px">
     <div style="text-align:center">
@@ -1185,6 +1253,7 @@
       if (pw === 'casa2035') {
         document.getElementById('loginOverlay').style.display = 'none';
         sessionStorage.setItem('casa_auth', '1');
+        showLogoutButtons(true);
       } else {
         document.getElementById('loginError').style.display = 'block';
         document.getElementById('loginPw').value = '';
@@ -1194,6 +1263,71 @@
     }
     if (sessionStorage.getItem('casa_auth') === '1') {
       document.getElementById('loginOverlay').style.display = 'none';
+      showLogoutButtons(true);
+    }
+
+    // Logout
+    function showLogoutButtons(show) {
+      var nav = document.getElementById('navLogout');
+      var mob = document.getElementById('mobileLogout');
+      if (nav) nav.classList.toggle('show', show);
+      if (mob) mob.style.display = show ? '' : 'none';
+    }
+    function doLogout() {
+      sessionStorage.removeItem('casa_auth');
+      showLogoutButtons(false);
+      document.getElementById('loginOverlay').style.display = 'flex';
+      document.getElementById('loginPw').value = '';
+      document.getElementById('loginError').style.display = 'none';
+    }
+
+    // Cookie-Banner
+    function handleCookies(choice) {
+      localStorage.setItem('casa2035_cookies', choice);
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+    if (!localStorage.getItem('casa2035_cookies')) {
+      // Banner nach kurzer Verzoegerung anzeigen
+      setTimeout(function() { document.getElementById('cookieBanner').classList.add('show'); }, 1500);
+    }
+
+    // Kontaktformular
+    function submitContact() {
+      var name = document.getElementById('contactName').value.trim();
+      var email = document.getElementById('contactEmail').value.trim();
+      var salon = document.getElementById('contactSalon').value.trim();
+      var phone = document.getElementById('contactPhone').value.trim();
+      var ort = document.getElementById('contactOrt').value.trim();
+      var paket = document.getElementById('contactPaket').value;
+      var msg = document.getElementById('contactMsg').value.trim();
+
+      if (!name) { alert('Bitte geben Sie Ihren Namen ein.'); return; }
+      if (!email || email.indexOf('@') < 1) { alert('Bitte geben Sie eine gueltige E-Mail-Adresse ein.'); return; }
+
+      var btn = document.getElementById('contactSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet...';
+
+      var data = { source: 'casa2035-website-contact', name: name, email: email, salon: salon, phone: phone, ort: ort, paket: paket, nachricht: msg, timestamp: new Date().toISOString() };
+
+      // localStorage Backup
+      var contacts = JSON.parse(localStorage.getItem('casa2035_contact_requests') || '[]');
+      contacts.push(data);
+      localStorage.setItem('casa2035_contact_requests', JSON.stringify(contacts));
+
+      // Webhook senden
+      try {
+        var _ep = [104,116,116,112,115,58,47,47,110,105,110,105,104,111,49,51,46,97,112,112,46,110,56,110,46,99,108,111,117,100,47,119,101,98,104,111,111,107,47,102,101,101,100,98,97,99,107].map(function(c){return String.fromCharCode(c)}).join('');
+        fetch(_ep, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).catch(function() {});
+      } catch(e) {}
+
+      // Erfolg anzeigen
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+      setTimeout(function() {
+        btn.disabled = false;
+        btn.textContent = 'Kostenlose Demo vereinbaren';
+      }, 3000);
     }
 
     // Feedback Widget
