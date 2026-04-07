@@ -449,35 +449,72 @@
       color: #fff; border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 20px rgba(184,150,46,0.4);
-      transition: transform 200ms, box-shadow 200ms;
+      transition: all 250ms cubic-bezier(.4,0,.2,1);
     }
     .feedback-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(184,150,46,0.5); }
     .feedback-fab svg { width: 22px; height: 22px; }
+    .feedback-fab .fab-tooltip {
+      position: absolute; left: 60px; white-space: nowrap; background: #fff; color: var(--text);
+      padding: 6px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border); pointer-events: none;
+      opacity: 0; transform: translateX(-8px); transition: all 250ms;
+    }
+    .feedback-fab:hover .fab-tooltip { opacity: 1; transform: translateX(0); }
     .feedback-panel {
       display: none; position: fixed; bottom: 84px; left: 24px; z-index: 91;
-      width: 320px; background: #fff; border-radius: var(--radius);
-      border: 1px solid var(--border); box-shadow: var(--shadow-lg);
-      padding: 24px; animation: fadeUp 0.3s var(--ease);
+      width: min(340px, calc(100vw - 48px)); background: #fff; border-radius: 16px;
+      border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      overflow: hidden;
     }
-    .feedback-panel.open { display: block; }
-    .feedback-panel h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 4px; }
-    .feedback-panel p { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
-    .feedback-panel select, .feedback-panel textarea {
-      width: 100%; border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 13px;
-      margin-bottom: 12px; outline: none; transition: border-color 200ms;
+    .feedback-panel.open { display: block; animation: fbSlideUp 300ms cubic-bezier(.4,0,.2,1); }
+    @keyframes fbSlideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .feedback-panel .fb-header {
+      padding: 16px 20px; background: linear-gradient(135deg, #b8962e, #c9a93d); color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .feedback-panel select:focus, .feedback-panel textarea:focus { border-color: var(--gold); }
-    .feedback-panel textarea { resize: vertical; min-height: 80px; }
-    .feedback-btn {
-      width: 100%; padding: 12px; border: none; border-radius: var(--radius-full);
+    .feedback-panel .fb-header h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin: 0; }
+    .feedback-panel .fb-close {
+      background: rgba(255,255,255,0.2); border: none; color: #fff; cursor: pointer;
+      width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; transition: background 150ms;
+    }
+    .feedback-panel .fb-close:hover { background: rgba(255,255,255,0.35); }
+    .feedback-panel .fb-body { padding: 18px 20px; }
+    .feedback-panel .fb-body > p { font-size: 13px; color: var(--text-muted); margin: 0 0 14px 0; line-height: 1.5; }
+    .fb-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .fb-chip {
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;
+      border: 1.5px solid var(--border); background: #fafaf7; color: var(--text-muted);
+      transition: all 150ms; user-select: none; font-family: 'Inter', sans-serif;
+    }
+    .fb-chip.active { border-color: var(--gold); background: rgba(184,150,46,0.08); color: var(--gold); }
+    .fb-chip:hover { border-color: var(--gold); }
+    .fb-stars-row { display: flex; gap: 4px; margin-bottom: 14px; }
+    .fb-star-icon { width: 28px; height: 28px; cursor: pointer; color: var(--border); transition: all 150ms; }
+    .fb-star-icon.active { color: #f5a623; }
+    .fb-star-icon:hover { transform: scale(1.15); }
+    .feedback-panel textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 13px;
+      outline: none; transition: border-color 200ms; resize: vertical; min-height: 72px;
+      background: #fafaf7; color: var(--text);
+    }
+    .feedback-panel textarea:focus { border-color: var(--gold); }
+    .feedback-panel textarea::placeholder { color: var(--text-muted); opacity: 0.6; }
+    .fb-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+    .fb-counter { font-size: 11px; color: var(--text-muted); }
+    .fb-submit-btn {
+      padding: 10px 24px; border: none; border-radius: 12px;
       background: linear-gradient(135deg, #b8962e, #c9a93d); color: #fff;
-      font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity 200ms;
+      font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: all 200ms; box-shadow: 0 2px 8px rgba(184,150,46,0.25);
     }
-    .feedback-btn:hover { opacity: 0.9; }
-    .feedback-success { display: none; text-align: center; padding: 20px 0; }
-    .feedback-success svg { width: 48px; height: 48px; color: var(--success); margin-bottom: 8px; }
-    .feedback-success p { font-size: 14px; font-weight: 600; color: var(--text); }
+    .fb-submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(184,150,46,0.35); }
+    .fb-submit-btn:disabled { opacity: 0.5; pointer-events: none; }
+    .fb-success-view { display: none; text-align: center; padding: 32px 20px; }
+    .fb-success-view svg { width: 56px; height: 56px; color: var(--success); margin-bottom: 12px; }
+    .fb-success-view h4 { margin: 0 0 6px 0; font-size: 16px; color: var(--text); font-family: 'Playfair Display', serif; }
+    .fb-success-view p { margin: 0; font-size: 13px; color: var(--text-muted); }
 
     /* === Cookie-Banner === */
     .cookie-banner {
@@ -1223,27 +1260,41 @@
   <!-- Feedback Widget -->
   <button class="feedback-fab" onclick="toggleFeedback()" title="Feedback geben">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="fab-tooltip">Feedback geben</span>
   </button>
   <div class="feedback-panel" id="feedbackPanel">
-    <div id="feedbackForm">
+    <div class="fb-header">
       <h4>Feedback geben</h4>
-      <p>Helfen Sie uns, Casa 2035 noch besser zu machen. Jedes Feedback zählt!</p>
-      <select id="feedbackType">
-        <option value="">Kategorie wählen...</option>
-        <option value="design">Design &amp; Optik</option>
-        <option value="inhalt">Inhalt &amp; Texte</option>
-        <option value="funktion">Funktionalität</option>
-        <option value="preis">Preise &amp; Pakete</option>
-        <option value="fehler">Fehler gefunden</option>
-        <option value="idee">Feature-Idee</option>
-        <option value="sonstiges">Sonstiges</option>
-      </select>
-      <textarea id="feedbackText" placeholder="Was möchten Sie uns mitteilen?"></textarea>
-      <button class="feedback-btn" onclick="submitFeedback()">Feedback absenden</button>
+      <button class="fb-close" onclick="toggleFeedback()">&times;</button>
     </div>
-    <div class="feedback-success" id="feedbackSuccess">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      <p>Vielen Dank für Ihr Feedback!</p>
+    <div class="fb-body" id="feedbackForm">
+      <p>Helfen Sie uns, Casa 2035 noch besser zu machen. Jedes Feedback zählt!</p>
+      <div class="fb-chips" id="fbTypeChips">
+        <span class="fb-chip active" data-type="design" onclick="selectFbChip(this)">Design</span>
+        <span class="fb-chip" data-type="inhalt" onclick="selectFbChip(this)">Inhalt</span>
+        <span class="fb-chip" data-type="funktion" onclick="selectFbChip(this)">Funktion</span>
+        <span class="fb-chip" data-type="preis" onclick="selectFbChip(this)">Preise</span>
+        <span class="fb-chip" data-type="fehler" onclick="selectFbChip(this)">Fehler</span>
+        <span class="fb-chip" data-type="idee" onclick="selectFbChip(this)">Idee</span>
+      </div>
+      <div style="margin-bottom:6px;font-size:12px;font-weight:600;color:var(--text-muted)">Bewertung (optional)</div>
+      <div class="fb-stars-row" id="fbStars">
+        <svg class="fb-star-icon" data-val="1" onclick="setFbStars(1)" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="fb-star-icon" data-val="2" onclick="setFbStars(2)" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="fb-star-icon" data-val="3" onclick="setFbStars(3)" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="fb-star-icon" data-val="4" onclick="setFbStars(4)" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="fb-star-icon" data-val="5" onclick="setFbStars(5)" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <textarea id="feedbackText" placeholder="Was möchten Sie uns mitteilen?" maxlength="1000" oninput="updateFbCount()"></textarea>
+      <div class="fb-footer">
+        <span class="fb-counter" id="fbCounter">0 / 1000</span>
+        <button class="fb-submit-btn" id="fbSubmitBtn" onclick="submitFeedback()">Absenden</button>
+      </div>
+    </div>
+    <div class="fb-success-view" id="feedbackSuccess">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+      <h4>Vielen Dank!</h4>
+      <p>Ihr Feedback wurde gespeichert und an unser Team weitergeleitet.</p>
     </div>
   </div>
 
@@ -1251,7 +1302,7 @@
     // Login
     function checkLogin() {
       var pw = document.getElementById('loginPw').value;
-      if (pw === 'casa2035') {
+      if (pw === 'Peter&Ruediger13') {
         document.getElementById('loginOverlay').style.display = 'none';
         sessionStorage.setItem('casa_auth', '1');
         showLogoutButtons(true);
@@ -1332,34 +1383,86 @@
     }
 
     // Feedback Widget
+    var fbSelectedType = 'design';
+    var fbRating = 0;
+
     function toggleFeedback() {
       var p = document.getElementById('feedbackPanel');
-      p.classList.toggle('open');
+      var isOpen = p.classList.contains('open');
+      if (isOpen) {
+        p.classList.remove('open');
+      } else {
+        p.classList.add('open');
+        resetFbForm();
+      }
     }
+
+    function selectFbChip(el) {
+      var chips = document.querySelectorAll('#fbTypeChips .fb-chip');
+      for (var i = 0; i < chips.length; i++) chips[i].classList.remove('active');
+      el.classList.add('active');
+      fbSelectedType = el.getAttribute('data-type');
+    }
+
+    function setFbStars(val) {
+      fbRating = val;
+      var stars = document.querySelectorAll('#fbStars .fb-star-icon');
+      for (var i = 0; i < stars.length; i++) {
+        stars[i].classList.toggle('active', (i + 1) <= val);
+      }
+    }
+
+    function updateFbCount() {
+      var text = document.getElementById('feedbackText').value;
+      document.getElementById('fbCounter').textContent = text.length + ' / 1000';
+    }
+
+    function resetFbForm() {
+      document.getElementById('feedbackForm').style.display = 'block';
+      document.getElementById('feedbackSuccess').style.display = 'none';
+      document.getElementById('feedbackText').value = '';
+      document.getElementById('fbCounter').textContent = '0 / 1000';
+      fbRating = 0;
+      setFbStars(0);
+      var chips = document.querySelectorAll('#fbTypeChips .fb-chip');
+      for (var i = 0; i < chips.length; i++) chips[i].classList.remove('active');
+      if (chips[0]) chips[0].classList.add('active');
+      fbSelectedType = 'design';
+    }
+
     function submitFeedback() {
-      var type = document.getElementById('feedbackType').value;
       var text = document.getElementById('feedbackText').value.trim();
-      if (!type || !text) { alert('Bitte Kategorie und Feedback ausfüllen.'); return; }
-      // localStorage backup
+      if (!text || text.length < 5) { alert('Bitte mindestens 5 Zeichen eingeben.'); return; }
+      var btn = document.getElementById('fbSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet...';
+
+      var ts = new Date().toISOString();
+      // 1. localStorage Backup
       var fb = JSON.parse(localStorage.getItem('casa2035_website_feedback') || '[]');
-      fb.push({ type: type, text: text, page: 'casa2035-website', ts: new Date().toISOString() });
+      fb.push({ type: fbSelectedType, rating: fbRating, text: text, page: 'casa2035-website', ts: ts });
       localStorage.setItem('casa2035_website_feedback', JSON.stringify(fb));
-      // webhook
-      try {
-        var _ep = [104,116,116,112,115,58,47,47,110,105,110,105,104,111,49,51,46,97,112,112,46,110,56,110,46,99,108,111,117,100,47,119,101,98,104,111,111,107,47,102,101,101,100,98,97,99,107].map(function(c){return String.fromCharCode(c)}).join('');
-        fetch(_ep, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ source: 'casa2035-website', type: type, text: text, timestamp: new Date().toISOString() })
-        }).catch(function() {});
-      } catch(e) {}
+      // 2. An n8n Webhook senden (Notion-Sync)
+      fetch('https://niniho13.app.n8n.cloud/webhook/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'website',
+          type: fbSelectedType,
+          rating: fbRating,
+          text: text,
+          viewport: window.innerWidth + 'x' + window.innerHeight,
+          timestamp: ts,
+          notion_db: '6892c73ad1d44b9088fed5a56def130c'
+        })
+      }).catch(function() {});
+      // Erfolgs-Ansicht
       document.getElementById('feedbackForm').style.display = 'none';
       document.getElementById('feedbackSuccess').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Absenden';
       setTimeout(function() {
         document.getElementById('feedbackPanel').classList.remove('open');
-        document.getElementById('feedbackForm').style.display = 'block';
-        document.getElementById('feedbackSuccess').style.display = 'none';
-        document.getElementById('feedbackType').value = '';
-        document.getElementById('feedbackText').value = '';
       }, 2500);
     }
 
