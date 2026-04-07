@@ -1445,7 +1445,7 @@
       var fb = JSON.parse(localStorage.getItem('casa2035_website_feedback') || '[]');
       fb.push({ type: fbSelectedType, rating: fbRating, text: text, page: 'casa2035-website', ts: ts });
       localStorage.setItem('casa2035_website_feedback', JSON.stringify(fb));
-      // 2. An n8n Webhook senden (Notion-Sync)
+      // 2. An Webhook senden (Notion-Sync)
       fetch('https://niniho13.app.n8n.cloud/webhook/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
