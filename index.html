@@ -1519,8 +1519,8 @@
       var fb = JSON.parse(localStorage.getItem('casa2035_website_feedback') || '[]');
       fb.push({ type: fbSelectedType, rating: fbRating, text: text, page: 'casa2035-website', ts: ts });
       localStorage.setItem('casa2035_website_feedback', JSON.stringify(fb));
-      // 2. An Webhook senden (Notion-Sync)
-      fetch('https://api.casa2035.de/webhook/feedback', {
+      // 2. An n8n Webhook senden (Supabase + Notion)
+      fetch('https://niniho13.app.n8n.cloud/webhook/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1528,25 +1528,9 @@
           type: fbSelectedType,
           rating: fbRating,
           text: text,
+          page: 'Produkt-Website',
           viewport: window.innerWidth + 'x' + window.innerHeight,
-          timestamp: ts,
-          notion_db: '6892c73ad1d44b9088fed5a56def130c'
-        })
-      }).catch(function() {});
-      // 3. Notion-Backup via Webhook
-      fetch('https://api.casa2035.de/webhook/notion-feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          parent: { database_id: '6892c73ad1d44b9088fed5a56def130c' },
-          properties: {
-            'Feedback': { title: [{ text: { content: text.substring(0, 200) } }] },
-            'Typ': { select: { name: fbSelectedType || 'design' } },
-            'Bewertung': { number: fbRating || 0 },
-            'Seite': { rich_text: [{ text: { content: 'Produkt-Website' } }] },
-            'Quelle': { select: { name: 'Website' } },
-            'Zeitpunkt': { date: { start: ts } }
-          }
+          timestamp: ts
         })
       }).catch(function() {});
       // Erfolgs-Ansicht
