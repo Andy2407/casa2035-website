@@ -1321,10 +1321,18 @@
   </div>
 
   <script>
-    // Login
-    function checkLogin() {
+    // Login (SHA-256 Hash-Vergleich statt Klartext; Passwort im Vault 15.04.2026)
+    async function sha256Hex(str) {
+      var buf = new TextEncoder().encode(str);
+      var hash = await crypto.subtle.digest('SHA-256', buf);
+      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+    var CASA_GATE_HASH = 'c38cfe357f4dcf31bb6db44de70644a5f0ff5a4bb8724eff8d8d681d1bda0b55';
+    async function checkLogin() {
       var pw = document.getElementById('loginPw').value;
-      if (pw === 'Peter&Ruediger13') {
+      if (!pw) return;
+      var h = await sha256Hex(pw);
+      if (h === CASA_GATE_HASH) {
         document.getElementById('loginOverlay').style.display = 'none';
         sessionStorage.setItem('casa_auth', '1');
         showLogoutButtons(true);
@@ -1506,32 +1514,58 @@
       });
     }
 
+    var webMicGranted = false;
+    function applyWebVoicePunctuation(text) {
+      if (!text) return text;
+      return text
+        .replace(/\s+(neuer absatz|absatz)/gi, '\n\n')
+        .replace(/\s+(fragezeichen|frage zeichen)/gi, '?')
+        .replace(/\s+(ausrufezeichen|ausrufe zeichen)/gi, '!')
+        .replace(/\s+(komma)/gi, ',')
+        .replace(/\s+(semikolon)/gi, ';')
+        .replace(/\s+(doppelpunkt)/gi, ':')
+        .replace(/\s+(punkt)\b/gi, '.')
+        .replace(/\s+([,.!?;:])/g, '$1')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+    }
     function toggleWebFbVoice() {
       if (webFbVoiceRec) { stopWebFbVoice(); return; }
       var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SR) { alert('Spracherkennung nicht unterstuetzt'); return; }
       var btn = document.getElementById('webFbVoiceBtn');
       var status = document.getElementById('webFbVoiceStatus');
-      navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
-        stream.getTracks().forEach(function(t) { t.stop(); });
+      function startRec() {
         webFbVoiceRec = true;
         webFbTextBefore = document.getElementById('feedbackText').value;
         btn.style.borderColor = '#c44040'; btn.style.color = '#c44040';
-        status.style.display = 'block'; status.textContent = 'Sprechen Sie jetzt...';
+        status.style.display = 'block'; status.textContent = 'Sprechen Sie jetzt... (Klick auf Mic stoppt)';
         var rec = new SR();
         rec.lang = 'de-DE'; rec.continuous = true; rec.interimResults = true;
         webFbRecorder = rec;
         rec.onresult = function(e) {
           var t = '';
-          for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript;
+          for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript + ' ';
+          var clean = applyWebVoicePunctuation(t);
           var ta = document.getElementById('feedbackText');
-          ta.value = webFbTextBefore ? webFbTextBefore + ' ' + t : t;
+          ta.value = webFbTextBefore ? webFbTextBefore + ' ' + clean : clean;
           updateFbCount();
         };
-        rec.onerror = function() { stopWebFbVoice(); };
-        rec.onend = function() { if (webFbVoiceRec) stopWebFbVoice(); };
-        rec.start();
-        setTimeout(function() { if (webFbVoiceRec) stopWebFbVoice(); }, 30000);
+        rec.onerror = function(e) {
+          if (e && e.error === 'not-allowed') webMicGranted = false;
+          if (e && e.error === 'no-speech') return;
+          stopWebFbVoice();
+        };
+        rec.onend = function() {
+          if (webFbVoiceRec) { try { rec.start(); } catch(err) { stopWebFbVoice(); } }
+        };
+        try { rec.start(); } catch(err) { stopWebFbVoice(); }
+      }
+      if (webMicGranted) { startRec(); return; }
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
+        stream.getTracks().forEach(function(t) { t.stop(); });
+        webMicGranted = true;
+        startRec();
       }).catch(function() { alert('Mikrofon-Zugriff verweigert'); });
     }
 
@@ -1643,6 +1677,18 @@
         c.appendChild(p);
       }
     })();
+
+    // === FB-19: Keyboard-Dismiss bei Tap ausserhalb (mobile) ===
+    document.addEventListener('click', function(ev) {
+      var ae = document.activeElement;
+      if (!ae) return;
+      var isInput = (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT');
+      if (!isInput) return;
+      if (ae === ev.target) return;
+      var t = ev.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || (t.closest && t.closest('input,textarea,select,label,button')))) return;
+      try { ae.blur(); } catch(e) {}
+    }, true);
   </script>
   <!-- Schema.org -->
   <script type="application/ld+json">
