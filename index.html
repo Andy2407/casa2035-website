@@ -1513,6 +1513,14 @@
     }
 
     var webMicGranted = false;
+    // FB-19: Wenn Browser-Permission bereits granted, nicht erneut fragen
+    if (navigator.permissions && navigator.permissions.query) {
+      try {
+        navigator.permissions.query({ name: 'microphone' }).then(function(p) {
+          if (p.state === 'granted') webMicGranted = true;
+        }).catch(function() {});
+      } catch(e) {}
+    }
     function applyWebVoicePunctuation(text) {
       if (!text) return text;
       return text
