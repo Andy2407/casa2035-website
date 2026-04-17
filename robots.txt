@@ -1,0 +1,8 @@
+# Casa 2035 — robots.txt
+# TESTPHASE: noindex aktiv. Vor Go-Live auf Allow: / umstellen!
+
+User-agent: *
+Disallow: /
+
+# Sitemap
+Sitemap: https://casa2035.de/sitemap.xml
