@@ -14,9 +14,10 @@
   <meta property="og:url" content="https://casa2035.de/">
   <meta property="og:locale" content="de_DE">
   <meta property="og:image" content="https://casa2035.de/icons/IMG_7886.PNG">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Casa 2035 — KI-Management für Beauty & Salons">
-  <meta name="twitter:description" content="Das innovativste KI-Management-System für Beauty-Betriebe im DACH-Raum.">
+  <meta name="twitter:description" content="Termine, Kommunikation und Analyse — KI-gestützt, DSGVO-konform. Für Friseursalons und Beauty-Betriebe in Deutschland, Österreich und der Schweiz.">
+  <meta name="twitter:image" content="https://casa2035.de/icons/IMG_7886.PNG">
   <link rel="icon" type="image/png" href="icons/IMG_7886.PNG">
   <link rel="apple-touch-icon" href="icons/IMG_7886.PNG">
   <title>Casa 2035 — KI-Management für Beauty &amp; Salons | DSGVO &amp; EU AI Act konform</title>
@@ -550,6 +551,70 @@
     .contact-success { display: none; text-align: center; padding: 24px 0; }
     .contact-success svg { width: 48px; height: 48px; color: var(--success); margin-bottom: 8px; }
 
+    /* === Demo-Anfrage Modal === */
+    .demo-modal {
+      display: none; position: fixed; inset: 0; z-index: 9995;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .demo-modal.open { display: flex; animation: fadeIn 200ms; }
+    .demo-modal-box {
+      background: #fff; border-radius: var(--radius); max-width: 520px; width: 100%;
+      max-height: 90vh; overflow-y: auto; padding: 0; position: relative;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    }
+    .demo-modal-header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #151510 100%);
+      padding: 28px 32px 20px; border-radius: var(--radius) var(--radius) 0 0;
+      position: relative;
+    }
+    .demo-modal-header h2 {
+      font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500;
+      color: #fff; margin-bottom: 6px; line-height: 1.2;
+    }
+    .demo-modal-header h2 em { color: var(--gold); font-style: italic; }
+    .demo-modal-header p { font-size: 13px; color: #999; margin: 0; }
+    .demo-modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,0.1); border: none; color: #fff; cursor: pointer;
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 150ms; font-size: 18px; line-height: 1;
+    }
+    .demo-modal-close:hover { background: rgba(255,255,255,0.2); }
+    .demo-modal-body { padding: 24px 32px 28px; }
+    .demo-modal-field {
+      width: 100%; padding: 12px 15px; border: 1px solid var(--border);
+      border-radius: var(--radius-sm); font-size: 14px;
+      font-family: 'Inter', sans-serif; background: #fafafa;
+      color: var(--text); margin-bottom: 10px; transition: border-color 200ms;
+    }
+    .demo-modal-field:focus { outline: none; border-color: var(--gold); background: #fff; }
+    .demo-modal-field::placeholder { color: #bbb; }
+    .demo-modal-row { display: flex; gap: 10px; }
+    .demo-modal-row .demo-modal-field { flex: 1; }
+    .demo-modal-submit {
+      width: 100%; padding: 14px; border: none; border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #C9A84C, #D4B95E); color: #fff;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      font-family: 'Inter', sans-serif; margin-top: 6px;
+      transition: opacity 200ms, transform 200ms;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.35);
+    }
+    .demo-modal-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+    .demo-modal-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .demo-modal-note { font-size: 11px; color: #aaa; text-align: center; margin-top: 10px; }
+    .demo-modal-success { display: none; text-align: center; padding: 36px 32px; }
+    .demo-modal-success svg { width: 56px; height: 56px; color: var(--success); margin-bottom: 14px; }
+    .demo-modal-success h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 6px; }
+    .demo-modal-success p { font-size: 14px; color: var(--text-light); }
+    @media (max-width: 600px) {
+      .demo-modal-box { max-height: 95vh; }
+      .demo-modal-header { padding: 20px 20px 16px; }
+      .demo-modal-body { padding: 18px 20px 24px; }
+      .demo-modal-row { flex-direction: column; gap: 0; }
+    }
+
     /* Responsive */
     @media (max-width: 1200px) {
       .nav-links { display: none; }
@@ -597,7 +662,7 @@
       <a href="#pricing">Preise</a>
       <a href="#compliance">Sicherheit</a>
       <a href="#demo">Demo</a>
-      <a href="#contact" class="nav-cta">Demo anfordern</a>
+      <button onclick="openDemoModal()" class="nav-cta" style="border:none;cursor:pointer">Demo anfordern</button>
       <button class="nav-logout" id="navLogout" onclick="doLogout()">Abmelden</button>
     </div>
     <button class="nav-mobile" onclick="toggleMobile()" aria-label="Menu">
@@ -615,7 +680,7 @@
     <a href="#pricing" onclick="toggleMobile()">Preise</a>
     <a href="#compliance" onclick="toggleMobile()">Sicherheit</a>
     <a href="#demo" onclick="toggleMobile()">Demo</a>
-    <a href="#contact" onclick="toggleMobile()">Demo anfordern</a>
+    <a href="#" onclick="event.preventDefault();toggleMobile();openDemoModal()">Demo anfordern</a>
     <a href="#" id="mobileLogout" onclick="event.preventDefault();toggleMobile();doLogout()" style="color:#e53e3e;display:none">Abmelden</a>
   </div>
 
@@ -628,10 +693,10 @@
       <h1>Die Zukunft der<br>Beauty-Branche ist <em>jetzt.</em></h1>
       <p class="hero-sub">Termine, Kommunikation und Analyse — KI-gestützt und DSGVO-konform. Für Friseursalons, Kosmetikstudios und Beauty-Betriebe in Deutschland, Österreich und der Schweiz.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-gold">
+        <button onclick="openDemoModal()" class="btn btn-gold" style="border:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Kostenlose Demo vereinbaren
-        </a>
+        </button>
         <a href="#pricing" class="btn btn-outline">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           Preise ansehen
@@ -827,7 +892,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Wunschfrisur-Service (gratis)</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Mein Salon — Basisversion</li>
           </ul>
-          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='basic';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Unverbindlich anfragen</a>
+          <button onclick="openDemoModal('basic')" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2);border:1.5px solid rgba(0,0,0,0.2);cursor:pointer">Unverbindlich anfragen</button>
         </div>
         <div class="pricing-card reveal reveal-delay-2">
           <div class="pricing-name">Smart Start</div>
@@ -843,7 +908,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Nachbestell-Erinnerung</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Mein Salon — Ihr Betrieb auf einen Blick</li>
           </ul>
-          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='smart-start';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Unverbindlich anfragen</a>
+          <button onclick="openDemoModal('smart-start')" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border:1.5px solid rgba(0,0,0,0.2);cursor:pointer">Unverbindlich anfragen</button>
         </div>
         <div class="pricing-card featured reveal reveal-delay-2">
           <div class="pricing-badge">Beliebteste Wahl</div>
@@ -860,7 +925,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Kasse + Tagesabrechnung</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Lagerverwaltung</li>
           </ul>
-          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='salon-pro';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-gold" style="width:100%;justify-content:center">Jetzt Demo vereinbaren</a>
+          <button onclick="openDemoModal('salon-pro')" class="btn btn-gold" style="width:100%;justify-content:center;border:none;cursor:pointer">Jetzt Demo vereinbaren</button>
         </div>
         <div class="pricing-card reveal reveal-delay-3">
           <div class="pricing-name">Full Suite</div>
@@ -876,7 +941,7 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Persönliches Onboarding</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Reaktionszeit unter 4 Stunden</li>
           </ul>
-          <a href="#contact" onclick="event.preventDefault();document.getElementById('contactPaket').value='full-suite';document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border-color:rgba(0,0,0,0.2)">Individuelles Angebot</a>
+          <button onclick="openDemoModal('full-suite')" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--text);border:1.5px solid rgba(0,0,0,0.2);cursor:pointer">Individuelles Angebot</button>
         </div>
       </div>
     </div>
@@ -1156,6 +1221,55 @@
     </div>
   </footer>
 
+  <!-- Demo-Anfrage Modal -->
+  <div class="demo-modal" id="demoModal" onclick="if(event.target===this)closeDemoModal()">
+    <div class="demo-modal-box">
+      <div class="demo-modal-header">
+        <h2>Kostenlose Demo <em>vereinbaren</em></h2>
+        <p>15 Minuten — wir zeigen Ihnen live, was Casa 2035 für Ihren Betrieb tun kann.</p>
+        <button class="demo-modal-close" onclick="closeDemoModal()" aria-label="Schließen">&times;</button>
+      </div>
+      <div id="demoModalForm">
+        <div class="demo-modal-body">
+          <div class="demo-modal-row">
+            <input type="text" class="demo-modal-field" id="dmName" placeholder="Ihr Name *" maxlength="80" required aria-label="Ihr Name">
+            <input type="text" class="demo-modal-field" id="dmSalon" placeholder="Name Ihres Salons" maxlength="80" aria-label="Name Ihres Salons">
+          </div>
+          <div class="demo-modal-row">
+            <input type="email" class="demo-modal-field" id="dmEmail" placeholder="E-Mail-Adresse *" maxlength="120" required aria-label="E-Mail-Adresse">
+            <input type="tel" class="demo-modal-field" id="dmPhone" placeholder="Telefon (optional)" maxlength="30" aria-label="Telefonnummer">
+          </div>
+          <div class="demo-modal-row">
+            <input type="text" class="demo-modal-field" id="dmOrt" placeholder="Stadt / Region" maxlength="60" aria-label="Stadt oder Region">
+            <select class="demo-modal-field" id="dmMitarbeiter" aria-label="Mitarbeiterzahl">
+              <option value="">Mitarbeiterzahl</option>
+              <option value="1">Nur ich (Einzelunternehmen)</option>
+              <option value="2-3">2–3 Mitarbeiter</option>
+              <option value="4-6">4–6 Mitarbeiter</option>
+              <option value="7-10">7–10 Mitarbeiter</option>
+              <option value="11+">Über 10 / Kette</option>
+            </select>
+          </div>
+          <select class="demo-modal-field" id="dmPaket" aria-label="Paketauswahl">
+            <option value="">Welches Paket interessiert Sie?</option>
+            <option value="basic">Basic (ab 29 EUR/Mo)</option>
+            <option value="smart-start">Smart Start (ab 49 EUR/Mo)</option>
+            <option value="salon-pro">Salon Pro (ab 79 EUR/Mo)</option>
+            <option value="full-suite">Full Suite (ab 199 EUR/Mo)</option>
+            <option value="unsicher">Noch unsicher — bitte beraten</option>
+          </select>
+          <button class="demo-modal-submit" id="dmSubmitBtn" onclick="submitDemoModal()">Demo jetzt anfragen</button>
+          <p class="demo-modal-note">Kein Vertrag. Keine Verpflichtung. Antwort innerhalb von 24 Stunden.</p>
+        </div>
+      </div>
+      <div class="demo-modal-success" id="demoModalSuccess">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3>Vielen Dank!</h3>
+        <p>Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Legal Modals -->
   <div class="legal-modal" id="legalModal" onclick="if(event.target===this)closeLegal()">
     <div class="legal-modal-box">
@@ -1288,7 +1402,7 @@
   </div>
 
   <!-- Sticky CTA -->
-  <a href="#contact" class="sticky-cta" id="stickyCta" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+  <button class="sticky-cta" id="stickyCta" onclick="openDemoModal()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     Demo anfordern
   </a>
@@ -1696,7 +1810,7 @@
       document.getElementById('legalModal').classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLegal(); });
+    // Escape-Taste: wird auch vom Demo-Modal-Handler abgefangen (weiter unten)
 
     // Particles
     (function() {
@@ -1712,6 +1826,59 @@
         c.appendChild(p);
       }
     })();
+
+    // === Demo-Anfrage Modal ===
+    function openDemoModal(paket) {
+      var sel = document.getElementById('dmPaket');
+      if (paket && sel) sel.value = paket;
+      document.getElementById('demoModalForm').style.display = '';
+      document.getElementById('demoModalSuccess').style.display = 'none';
+      var btn = document.getElementById('dmSubmitBtn');
+      if (btn) { btn.disabled = false; btn.textContent = 'Demo jetzt anfragen'; }
+      document.getElementById('demoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() { var f = document.getElementById('dmName'); if (f) f.focus(); }, 100);
+    }
+    function closeDemoModal() {
+      document.getElementById('demoModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function submitDemoModal() {
+      var name = document.getElementById('dmName').value.trim();
+      var email = document.getElementById('dmEmail').value.trim();
+      if (!name) { alert('Bitte geben Sie Ihren Namen ein.'); return; }
+      if (!email || email.indexOf('@') < 1) { alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.'); return; }
+      var btn = document.getElementById('dmSubmitBtn');
+      btn.disabled = true; btn.textContent = 'Wird gesendet...';
+      var data = {
+        source: 'casa2035-website-demo-modal',
+        name: name,
+        email: email,
+        salon: document.getElementById('dmSalon').value.trim(),
+        phone: document.getElementById('dmPhone').value.trim(),
+        ort: document.getElementById('dmOrt').value.trim(),
+        mitarbeiter: document.getElementById('dmMitarbeiter').value,
+        paket: document.getElementById('dmPaket').value,
+        timestamp: new Date().toISOString()
+      };
+      // Lokales Backup
+      var leads = JSON.parse(localStorage.getItem('casa2035_demo_leads') || '[]');
+      leads.push(data);
+      localStorage.setItem('casa2035_demo_leads', JSON.stringify(leads));
+      // Webhook → n8n → Brevo
+      fetch('https://api.casa2035.de/webhook/demo-anfrage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(function() {});
+      // Erfolg zeigen
+      document.getElementById('demoModalForm').style.display = 'none';
+      document.getElementById('demoModalSuccess').style.display = 'block';
+      setTimeout(function() { closeDemoModal(); }, 4000);
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeDemoModal(); closeLegal(); }
+    });
 
     // === FB-19: Keyboard-Dismiss bei Tap ausserhalb (mobile) ===
     document.addEventListener('click', function(ev) {
